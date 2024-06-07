@@ -1,19 +1,19 @@
-  <?php
-require_once("admin/config2.php");
-$_id = $_GET["id"];  //nav-top se id
+<?php
+require_once ("admin/config2.php");
+$urlKey = $_GET["url_key"];  //nav-top se url_key
 // dd($_id);
-$selQuery = "SELECT * FROM `pages`where url_key='$_id'";
+$selQuery = "SELECT * FROM `pages`where url_key='$urlKey'";
 $page = $con->query($selQuery);
 // dd($page);
-  $_page = mysqli_fetch_assoc($page); 
-   
- $_title =  $_page["title"];
- $_img = $_page['banner_image'];
- $_heading = $_page['heading'];
- $_description = $_page["description"];
+$_page = mysqli_fetch_assoc($page);
 
-  
-  
+$_title = $_page["title"];
+$_img = $_page['banner_image'];
+$_heading = $_page['heading'];
+$_description = $_page["description"];
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@ $page = $con->query($selQuery);
   <title>Edgecut</title>
 
 
-  <?php require_once("header.php"); ?>
+  <?php require_once ("header.php"); ?>
 
 </head>
 
@@ -41,7 +41,7 @@ $page = $con->query($selQuery);
 
   <div class="hero_area">
     <!-- header section strats -->
-    <?php require_once("nav-top.php"); ?>
+    <?php require_once ("nav-top.php"); ?>
     <!-- end header section -->
   </div>
 
@@ -57,20 +57,20 @@ $page = $con->query($selQuery);
         </div>
         <div class="col-md-6">
           <div class="detail-box">
-         
-            
+
+
             <div class="heading_container">
               <h1>
-               
-              <?= $_heading ?> 
-             
-                
-                </h1>
+
+                <?= $_heading ?>
+
+
+              </h1>
             </div>
             <p>
-            <?= $_description ?> 
+              <?= $_description ?>
             </p>
-            
+
             <a href="">
               Read More
             </a>
@@ -83,11 +83,11 @@ $page = $con->query($selQuery);
   <!-- end about section -->
 
 
- 
+
 
 
   <!-- footer section -->
- <?php require_once("footer.php"); ?>
+  <?php require_once ("footer.php"); ?>
 </body>
 
 </html>

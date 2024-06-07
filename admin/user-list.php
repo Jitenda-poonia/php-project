@@ -1,4 +1,5 @@
-﻿<?php require_once("config2.php"); 
+﻿<?php 
+require_once("config2.php"); 
 require_once("validation.php");
 $selQuery = "SELECT * FROM `users`";
 $result = $con->query($selQuery);

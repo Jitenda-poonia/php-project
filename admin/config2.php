@@ -1,19 +1,20 @@
 <?php
 session_start();
 
-function dd($data){
+function dd($data)
+{
     echo "<pre>";
     print_r($data);
     die();
 }
-$host = "localhost";//127.0.0.1
+$host = "localhost";
 $userName = "root";
 $password = "";
-$database ="php_project";
-$con = mysqli_connect($host,$userName,$password,$database);
+$database = "php-project";
+$con = mysqli_connect($host, $userName, $password, $database);
 
-if(!$con){
+if (!$con) {
     echo "connection not established...";
 }
-  
+
 ?>

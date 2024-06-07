@@ -1,4 +1,6 @@
 <?php require_once("config2.php"); 
+require_once("validation.php");
+
 $editId = $_GET["id"]??0;
 $selQuery = "SELECT * FROM `sliders` where id=$editId";
 $sliderQuery= $con->query($selQuery);

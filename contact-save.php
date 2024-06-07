@@ -1,29 +1,32 @@
 <?php
-require_once("admin/config2.php"); 
+require_once ("admin/config2.php");
 $data = $_POST;
 $name = $data["name"];
 $email = $data["email"];
 $phone = $data["phone"];
 $message = $data["message"];
- $isError = false; 
+$isError = false;
 
- if($name ==""){
-     $isError = true;
-     $_SESSION["name_error"] = "Name is required field";
- }if($email ==""){
+if ($name == "") {
+    $isError = true;
+    $_SESSION["name_error"] = "Name is required field";
+}
+if ($email == "") {
     $isError = true;
     $_SESSION["email_error"] = "Email is required field";
-}if($phone ==""){
+}
+if ($phone == "") {
     $isError = true;
     $_SESSION["phone_error"] = "Phone is required field";
-}if($message ==""){
+}
+if ($message == "") {
     $isError = true;
     $_SESSION["message_error"] = "Message is required field";
 }
- if($isError){
- header("location:contact.php");
-     exit();
- }
+if ($isError) {
+    header("location:contact.php");
+    exit();
+}
 $insQuery = "INSERT INTO `enquiries`(name,email,phone,message) VALUES ('$name','$email','$phone','$message')  ";
 $con->query($insQuery);
 

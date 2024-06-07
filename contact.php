@@ -15,13 +15,13 @@
 
   <title>Edgecut</title>
 
-<style>
-    .error{
-        color:red;
+  <style>
+    .error {
+      color: red;
     }
-</style>
-<?php require_once("header.php"); ?>
- 
+  </style>
+  <?php require_once ("header.php"); ?>
+
 
 </head>
 
@@ -29,7 +29,7 @@
 
   <div class="hero_area">
     <!-- header section strats -->
-    <?php require_once("nav-top.php"); ?>
+    <?php require_once ("nav-top.php"); ?>
     <!-- end header section -->
   </div>
 
@@ -46,75 +46,73 @@
             </div>
             <form action="contact-save.php" method="post" id="form">
               <div>
-              <?php
-                    if(isset($_SESSION["name_error"])){ ?>
-                    <span class="error">
-                      <?php
+                <?php
+                if (isset($_SESSION["name_error"])) { ?>
+                  <span class="error">
+                    <?php
 
-                      echo $_SESSION["name_error"];
-                      unset($_SESSION["name_error"]);
-                      ?>
-                    </span>
-                   <?php }
-
+                    echo $_SESSION["name_error"];
+                    unset($_SESSION["name_error"]);
                     ?>
-                <input type="text" placeholder="Your Name" name="name"/>
-               
+                  </span>
+                <?php }
+
+                ?>
+                <input type="text" placeholder="Your Name" name="name" />
+
               </div>
               <div>
+                <?php
+                if (isset($_SESSION["phone_error"])) { ?>
+                  <span class="error">
                     <?php
-                    if(isset($_SESSION["phone_error"])){ ?>
-                    <span class="error">
-                      <?php
 
-                      echo $_SESSION["phone_error"];
-                      unset($_SESSION["phone_error"]);
-                      ?>
-                    </span>
-                   <?php }
-
+                    echo $_SESSION["phone_error"];
+                    unset($_SESSION["phone_error"]);
                     ?>
+                  </span>
+                <?php }
+
+                ?>
                 <input type="text" placeholder="Phone Number" name="phone" />
               </div>
               <div>
                 <?php
-                    if(isset($_SESSION["email_error"])){ ?>
-                    <span class="error">
-                      <?php
+                if (isset($_SESSION["email_error"])) { ?>
+                  <span class="error">
+                    <?php
 
-                      echo $_SESSION["email_error"];
-                      unset($_SESSION["email_error"]);
-                      ?>
-                    </span>
-                   <?php }
-
+                    echo $_SESSION["email_error"];
+                    unset($_SESSION["email_error"]);
                     ?>
-                <input type="email" placeholder="Email" name="email"/>
+                  </span>
+                <?php }
+
+                ?>
+                <input type="email" placeholder="Email" name="email" />
               </div>
               <div>
                 <?php
-                    if(isset($_SESSION["message_error"])){ ?>
-                    <span class="error">
-                      <?php
+                if (isset($_SESSION["message_error"])) { ?>
+                  <span class="error">
+                    <?php
 
-                      echo $_SESSION["message_error"];
-                      unset($_SESSION["message_error"]);
-                      ?>
-                    </span>
-                   <?php }
-
+                    echo $_SESSION["message_error"];
+                    unset($_SESSION["message_error"]);
                     ?>
+                  </span>
+                <?php }
+
+                ?>
                 <input type="text" class="message-box" placeholder="Message" name="message" />
               </div>
-             
+
               <div class="btn_box">
-                <button>
-                  SEND
-                </button>
+                <button>Submit</button>
               </div>
             </form>
-           
-      
+
+
           </div>
         </div>
         <div class="col-md-6">
@@ -128,8 +126,8 @@
     </div>
   </section>
   <!-- end contact section -->
-<?php  require_once("footer.php");?>
-  
+  <?php require_once ("footer.php"); ?>
+
 </body>
 
 </html>

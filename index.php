@@ -1,5 +1,5 @@
 <?php
-require_once("admin/config2.php");
+require_once ("admin/config2.php");
 $selQuery = "SELECT * FROM blocks";
 $blog = $con->query($selQuery);
 // dd($blog);
@@ -22,15 +22,15 @@ $_description = $_blog["description"];
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Site Metas -->
-  
+
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
 
   <title>Edgecut</title>
 
-<?php require_once("header.php"); ?>
-  
+  <?php require_once ("header.php"); ?>
+
 
 </head>
 
@@ -38,10 +38,10 @@ $_description = $_blog["description"];
 
   <div class="hero_area">
     <!-- header section strats -->
-    <?php require_once("nav-top.php"); ?>
+    <?php require_once ("nav-top.php"); ?>
     <!-- end header section -->
     <!-- slider section -->
-    <?php require_once("slider-section.php"); ?>
+    <?php require_once ("slider-section.php"); ?>
     <!-- end slider section -->
   </div>
 
@@ -54,7 +54,7 @@ $_description = $_blog["description"];
           Our Furniture
         </h2>
         <p>
-          which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, 
+          which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
           you need to be sure there isn't an
         </p>
       </div>
@@ -204,7 +204,8 @@ $_description = $_blog["description"];
               </h2>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat
+              dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
             </p>
             <a href="">
               Read More
@@ -223,7 +224,7 @@ $_description = $_blog["description"];
     <div class="container">
       <div class="heading_container">
         <h2>
-        <?= $_title ?>
+          <?= $_title ?>
         </h2>
       </div>
       <div class="row">
@@ -234,10 +235,10 @@ $_description = $_blog["description"];
             </div>
             <div class="detail-box">
               <h5>
-              <?= $heading ?>
+                <?= $heading ?>
               </h5>
               <p>
-              <?= $_description ?>
+                <?= $_description ?>
               </p>
               <a href="">
                 Read More
@@ -255,7 +256,8 @@ $_description = $_blog["description"];
                 Anything embarrassing hidden in the middle
               </h5>
               <p>
-                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+                alteration in some form, by injected humour, or randomised words which don't look even slightly
+                believable.
               </p>
               <a href="">
                 Read More
@@ -273,7 +275,8 @@ $_description = $_blog["description"];
                 Molestias magni natus dolores odio commodi. Quaerat!
               </h5>
               <p>
-                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+                alteration in some form, by injected humour, or randomised words which don't look even slightly
+                believable.
               </p>
               <a href="">
                 Read More
@@ -400,75 +403,75 @@ $_description = $_blog["description"];
             </div>
             <form action="contact-save.php" method="post" id="form">
               <div>
-              <?php
-                    if(isset($_SESSION["name_error"])){ ?>
-                    <span class="error">
-                      <?php
+                <?php
+                if (isset($_SESSION["name_error"])) { ?>
+                  <span class="error">
+                    <?php
 
-                      echo $_SESSION["name_error"];
-                      unset($_SESSION["name_error"]);
-                      ?>
-                    </span>
-                   <?php }
-
+                    echo $_SESSION["name_error"];
+                    unset($_SESSION["name_error"]);
                     ?>
-                <input type="text" placeholder="Your Name" name="name"/>
-               
+                  </span>
+                <?php }
+
+                ?>
+                <input type="text" placeholder="Your Name" name="name" />
+
               </div>
               <div>
+                <?php
+                if (isset($_SESSION["phone_error"])) { ?>
+                  <span class="error">
                     <?php
-                    if(isset($_SESSION["phone_error"])){ ?>
-                    <span class="error">
-                      <?php
 
-                      echo $_SESSION["phone_error"];
-                      unset($_SESSION["phone_error"]);
-                      ?>
-                    </span>
-                   <?php }
-
+                    echo $_SESSION["phone_error"];
+                    unset($_SESSION["phone_error"]);
                     ?>
+                  </span>
+                <?php }
+
+                ?>
                 <input type="text" placeholder="Phone Number" name="phone" />
               </div>
               <div>
                 <?php
-                    if(isset($_SESSION["email_error"])){ ?>
-                    <span class="error">
-                      <?php
+                if (isset($_SESSION["email_error"])) { ?>
+                  <span class="error">
+                    <?php
 
-                      echo $_SESSION["email_error"];
-                      unset($_SESSION["email_error"]);
-                      ?>
-                    </span>
-                   <?php }
-
+                    echo $_SESSION["email_error"];
+                    unset($_SESSION["email_error"]);
                     ?>
-                <input type="email" placeholder="Email" name="email"/>
+                  </span>
+                <?php }
+
+                ?>
+                <input type="email" placeholder="Email" name="email" />
               </div>
               <div>
                 <?php
-                    if(isset($_SESSION["message_error"])){ ?>
-                    <span class="error">
-                      <?php
+                if (isset($_SESSION["message_error"])) { ?>
+                  <span class="error">
+                    <?php
 
-                      echo $_SESSION["message_error"];
-                      unset($_SESSION["message_error"]);
-                      ?>
-                    </span>
-                   <?php }
-
+                    echo $_SESSION["message_error"];
+                    unset($_SESSION["message_error"]);
                     ?>
+                  </span>
+                <?php }
+
+                ?>
                 <input type="text" class="message-box" placeholder="Message" name="message" />
               </div>
-             
+
               <div class="btn_box">
                 <button>
                   SEND
                 </button>
               </div>
             </form>
-           
-      
+
+
           </div>
         </div>
         <div class="col-md-6">
@@ -484,12 +487,12 @@ $_description = $_blog["description"];
   <!-- end contact section -->
 
   <!-- info section -->
-  
+
   <!-- end info_section -->
 
 
   <!-- footer section -->
-<?php require_once("footer.php"); ?>
+  <?php require_once ("footer.php"); ?>
 </body>
 
 </html>

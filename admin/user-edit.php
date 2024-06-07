@@ -1,7 +1,10 @@
- <?php require_once("config2.php"); 
-$editId = $_GET["id"]??0;
+<?php
+require_once ("config2.php");
+require_once ("validation.php");
+
+$editId = $_GET["id"] ?? 0;
 $selQuery = "SELECT * FROM `users` where id=$editId";
-$userQuery= $con->query($selQuery);
+$userQuery = $con->query($selQuery);
 $userData = mysqli_fetch_assoc($userQuery);
 // dd($userData);
 ?>
@@ -9,18 +12,20 @@ $userData = mysqli_fetch_assoc($userQuery);
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>user edit</title>
 
-   <?php require_once("include/header.php");  ?>
+    <?php require_once ("include/header.php"); ?>
 </head>
+
 <body>
     <div id="wrapper">
-        <?php  include_once("include/navbar-top.php"); ?>
+        <?php include_once ("include/navbar-top.php"); ?>
         <!-- /. NAV TOP  -->
-        <?php  include_once("include/nav-barSide.php"); ?>
+        <?php include_once ("include/nav-barSide.php"); ?>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
@@ -31,123 +36,153 @@ $userData = mysqli_fetch_assoc($userQuery);
                     </div>
                 </div>
                 <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-               <div class="panel panel-info">
-                        <div class="panel-heading">
-                           User detail update
-                        </div>
-                        <div class="panel-body">
-                            <form role="form" action="user-update.php" method="post">
-                                <input type="hidden" name="id" value="<?= $userData["id"] ?>">
-                                        <div class="form-group">
-                                            <label>Enter Name</label>
-                                            <input class="form-control" type="text" name="name" value="<?= $userData["name"]??"" ?>">
-                                            <p class="help-block" style="color:red;">
-                                                <?php 
-                                                    if(isset($_SESSION["name_error"])) {
-                                                        echo $_SESSION["name_error"];
-                                                        unset($_SESSION["name_error"]);
-                                                    }
-                                                ?>
-                                            </p>
-                                            
-                                        </div>
-                                 <div class="form-group">
-                                            <label>Enter Email</label>
-                                            <input class="form-control" type="email" name="email" value="<?= $userData["email"]??'' ?>">
-                                             <p class="help-block" style="color:red;">
-                                             <?php 
-                                                 if(isset($_SESSION["email_error"])) {
-                                                     echo $_SESSION["email_error"];
-                                                     unset($_SESSION["email_error"]);
-                                                 }
-                                             ?>
-                                         </p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Enter Mobile number</label>
-                                            <input class="form-control" type="tel" name="phone" value="<?= $userData["phone"]??'' ?>">
-                                            <p class="help-block" style="color:red;">
-                                                <?php 
-                                                    if(isset($_SESSION["phone_error"])) {
-                                                        echo $_SESSION["phone_error"];
-                                                        unset($_SESSION["phone_error"]);
-                                                    }
-                                                ?>
-                                            </p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label> Select Gender</label>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="gender" id="optionsRadios1" value="Female" <?= (($userData["gender"]??'')=="Female")? "checked":''?> >Female
-                                                </label>
-                                                 <p class="help-block" style="color:red;">
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="gender" id="optionsRadios2" value="Male" <?= (($userData["gender"]??"")=="Male")? "checked":''?> >Male
-                                                    </label>
-                                                </div>
-                                                <p class="help-block" style="color:red;">
-                                                <?php 
-                                                    if(isset($_SESSION["gender_error"])) {
-                                                        echo $_SESSION["gender_error"];
-                                                        unset($_SESSION["gender_error"]);
-                                                    }
-                                                ?>
-                                            </p>
-                                            
-                                            
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Designation</label>
-                                            <input class="form-control" type="text" name="designation" value="<?= $userData["designation"]??'' ?>">
-                                            <p class="help-block" style="color:red;">
-                                                <?php 
-                                                    if(isset($_SESSION["designation_error"])) {
-                                                        echo $_SESSION["designation_error"];
-                                                        unset($_SESSION["designation_error"]);
-                                                    }
-                                                ?>
-                                            </p>
-                                        </div>
-                                            <div class="form-group">
-                                            <label>Password</label>
-                                            <input class="form-control" type="password" name="password" value="<?= $userData["password"]??'' ?>">
-                                            
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Re Enter password</label>
-                                            <input class="form-control" type="password" name="confirm-pass" value="<?= $userData["password"]??'' ?>">
-                                            <p class="help-block" style="color:red;">
-                                                <?php 
-                                                    if(isset($_SESSION["password_error"])) {
-                                                        echo $_SESSION["password_error"];
-                                                        unset($_SESSION["password_error"]);
-                                                    }
-                                                ?>
-                                            </p>
-                                        </div>
-                                 
-                                        <button type="submit" class="btn btn-info">Save </button>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                User detail update
+                            </div>
+                            <div class="panel-body">
+                                <form role="form" action="user-update.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $userData["id"] ?>">
+                                    <div class="form-group">
+                                        <label>Enter Name</label>
+                                        <input class="form-control" type="text" name="name"
+                                            value="<?= $userData["name"] ?? "" ?>">
+                                        <p class="help-block" style="color:red;">
+                                            <?php
+                                            if (isset($_SESSION["name_error"])) {
+                                                echo $_SESSION["name_error"];
+                                                unset($_SESSION["name_error"]);
+                                            }
+                                            ?>
+                                        </p>
 
-                                    </form>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enter Email</label>
+                                        <input class="form-control" type="email" name="email"
+                                            value="<?= $userData["email"] ?? '' ?>">
+                                        <p class="help-block" style="color:red;">
+                                            <?php
+                                            if (isset($_SESSION["email_error"])) {
+                                                echo $_SESSION["email_error"];
+                                                unset($_SESSION["email_error"]);
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enter Mobile number</label>
+                                        <input class="form-control" type="tel" name="phone"
+                                            value="<?= $userData["phone"] ?? '' ?>">
+                                        <p class="help-block" style="color:red;">
+                                            <?php
+                                            if (isset($_SESSION["phone_error"])) {
+                                                echo $_SESSION["phone_error"];
+                                                unset($_SESSION["phone_error"]);
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label> Select Gender</label>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="gender" id="optionsRadios1" value="Female"
+                                                    <?= (($userData["gender"] ?? '') == "Female") ? "checked" : '' ?>>Female
+                                            </label>
+                                            <p class="help-block" style="color:red;">
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="gender" id="optionsRadios2" value="Male"
+                                                    <?= (($userData["gender"] ?? "") == "Male") ? "checked" : '' ?>>Male
+                                            </label>
+                                        </div>
+                                        <p class="help-block" style="color:red;">
+                                            <?php
+                                            if (isset($_SESSION["gender_error"])) {
+                                                echo $_SESSION["gender_error"];
+                                                unset($_SESSION["gender_error"]);
+                                            }
+                                            ?>
+                                        </p>
+
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Designation</label>
+                                        <input class="form-control" type="text" name="designation"
+                                            value="<?= $userData["designation"] ?? '' ?>">
+                                        <p class="help-block" style="color:red;">
+                                            <?php
+                                            if (isset($_SESSION["designation_error"])) {
+                                                echo $_SESSION["designation_error"];
+                                                unset($_SESSION["designation_error"]);
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="password" name="password" id="password">
+                                            <span class="input-group-addon toggle-password"
+                                                onclick="togglePassword('password')">
+                                                <i class="fa fa-eye"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Re-enter Password</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="password" name="confirm_password"
+                                                id="confirm_password">
+                                            <span class="input-group-addon toggle-password"
+                                                onclick="togglePassword('confirm_password')">
+                                                <i class="fa fa-eye"></i>
+                                            </span>
+                                        </div>
+                                        <p class="help-block" style="color:red;">
+                                            <?php
+                                            if (isset($_SESSION["password_error"])) {
+                                                echo $_SESSION["password_error"];
+                                                unset($_SESSION["password_error"]);
+                                            }
+                                            ?>
+                                        </p>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-info">Save </button>
+
+                                </form>
                             </div>
                         </div>
-                            </div>
+                    </div>
 
-            <!-- /. PAGE INNER  -->
+                    <!-- /. PAGE INNER  -->
+                </div>
+                <!-- /. PAGE WRAPPER  -->
+            </div>
         </div>
-        <!-- /. PAGE WRAPPER  -->
-    </div>
-    </div>
-    <!-- /. WRAPPER  -->
-    <!-- /. FOOTER  -->
+        <!-- /. WRAPPER  -->
+        <!-- /. FOOTER  -->
 
-  <?php include_once("include/footer.php");  ?>
+        <?php include_once ("include/footer.php"); ?>
+        <script>
+            function togglePassword(fieldId) {
+                var field = document.getElementById(fieldId);
+                var icon = field.nextElementSibling.querySelector('i');
+                if (field.type === "password") {
+                    field.type = "text";
+                    icon.className = 'fa fa-eye-slash';
+                } else {
+                    field.type = "password";
+                    icon.className = 'fa fa-eye';
+                }
+            }
+        </script>
 </body>
-</html>
 
+</html>
